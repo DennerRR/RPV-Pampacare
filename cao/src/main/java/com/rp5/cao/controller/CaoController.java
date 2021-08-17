@@ -49,8 +49,14 @@ public class CaoController {
 
     @GetMapping("/all")
     @ApiOperation(value = "Retorna todos os cães cadastrados")
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllCaes() {
         List<Cao> caes = caoService.findAllCaes();
         return new ResponseEntity<>(caes, HttpStatus.OK);
+    }
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Deletar um cão pelo id")
+    public void deleteCao(@PathVariable("id")Long id){
+        caoService.deleteCao(id);
+
     }
 }

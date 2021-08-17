@@ -43,6 +43,6 @@ public class CaoServiceImplements implements ICaoService {
 
     @Override
     public List<Cao> findAllCaes() {
-        return null;
+        return caoRepository.findAll();
     }
 }
