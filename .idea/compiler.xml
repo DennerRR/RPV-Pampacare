@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="condicao" />
+        <module name="propriedade" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="condicao" target="10" />
+      <module name="propriedade" target="10" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="condicao" options="-parameters" />
+      <module name="propriedade" options="-parameters" />
+    </option>
+  </component>
+</project>

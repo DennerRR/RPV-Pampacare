@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/RPV-Pampacare.iml" filepath="$PROJECT_DIR$/.idea/RPV-Pampacare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/condicao/condicao.iml" filepath="$PROJECT_DIR$/condicao/condicao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/propriedade/propriedade.iml" filepath="$PROJECT_DIR$/propriedade/propriedade.iml" />
+    </modules>
+  </component>
+</project>
