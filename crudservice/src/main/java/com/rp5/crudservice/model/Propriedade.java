@@ -1,4 +1,4 @@
-package com.rp5.propriedade.model;
+package com.rp5.crudservice.model;
 
 import javax.persistence.*;
 
@@ -21,6 +21,16 @@ public class Propriedade {
         this.id = id;
     }
 
+    public Propriedade() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getLongitude() {
         return longitude;
@@ -36,13 +46,5 @@ public class Propriedade {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }
