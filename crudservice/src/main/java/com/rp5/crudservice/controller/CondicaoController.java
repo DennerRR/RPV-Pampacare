@@ -17,11 +17,11 @@ import java.util.List;
 @RequestMapping("/api/condicao")
 @Api(value = "API Rest Condicao")
 @CrossOrigin(origins = "*")
-public class condicaoController {
+public class CondicaoController {
     private ICondicaoService condicaoService;
     private ICaoService caoService;
 
-    public condicaoController(ICondicaoService condicaoService, ICaoService caoService) {
+    public CondicaoController(ICondicaoService condicaoService, ICaoService caoService) {
         this.condicaoService = condicaoService;
         this.caoService = caoService;
     }
