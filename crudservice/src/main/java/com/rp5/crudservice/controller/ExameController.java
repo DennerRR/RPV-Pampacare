@@ -1,7 +1,9 @@
 package com.rp5.crudservice.controller;
 
 import com.rp5.crudservice.dto.ExameDTO;
+import com.rp5.crudservice.interfaces.IAmostraService;
 import com.rp5.crudservice.interfaces.IExameService;
+import com.rp5.crudservice.model.Amostra;
 import com.rp5.crudservice.model.Exame;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,13 +19,21 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ExameController {
     private IExameService exameService;
+    private IAmostraService amostraService;
 
-    public ExameController(IExameService exameService) { this.exameService = exameService; }
+    public ExameController(IExameService exameService, IAmostraService amostraService) {
+        this.exameService = exameService;
+        this.amostraService = amostraService;
+    }
+
     @PostMapping("/save")
     @ApiOperation(value = "salvar um exame no banco de dados ")
     public void saveExame(@RequestBody ExameDTO exameDTO){
+        Amostra amostra = amostraService.getAmostraById(exameDTO.getIdExame());
         Exame exame = new Exame();
+        exame.setAmostra(amostra);
         exame.setData(exameDTO.getData());
+
         exameService.saveExame(exame);
 
     }
@@ -42,8 +52,14 @@ public class ExameController {
 
     @GetMapping("/all")
     @ApiOperation(value = "Retorna todos os exames cadastrados")
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllExame() {
         List<Exame> exames = exameService.findAllExames();
         return new ResponseEntity<>(exames, HttpStatus.OK);
+    }
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Deletar um exame pelo id")
+    public void deleteExame(@PathVariable("id") Long id) {
+        exameService.deleteExame(id);
+
     }
 }

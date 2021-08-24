@@ -2,9 +2,13 @@ package com.rp5.crudservice.controller;
 
 import com.rp5.crudservice.dto.CaoDTO;
 import com.rp5.crudservice.dto.PropriedadeDTO;
+import com.rp5.crudservice.interfaces.IBairroService;
 import com.rp5.crudservice.interfaces.IPropriedadeService;
+import com.rp5.crudservice.interfaces.IProprietarioService;
+import com.rp5.crudservice.model.Bairro;
 import com.rp5.crudservice.model.Cao;
 import com.rp5.crudservice.model.Propriedade;
+import com.rp5.crudservice.model.Proprietario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
@@ -19,15 +23,23 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PropriedadeController {
     private IPropriedadeService propriedadeService;
+    private IBairroService bairroService;
+    private IProprietarioService proprietarioService;
 
-    public PropriedadeController(IPropriedadeService propriedadeService) {
+    public PropriedadeController(IPropriedadeService propriedadeService, IBairroService bairroService, IProprietarioService proprietarioService) {
         this.propriedadeService = propriedadeService;
+        this.bairroService = bairroService;
+        this.proprietarioService = proprietarioService;
     }
 
     @PostMapping("/save")
     @ApiOperation(value = "salvar uma Propriedade no banco de dados ")
     public void savePropriedade(@RequestBody PropriedadeDTO propriedadeDTO) {
+        Bairro bairro = bairroService.getBairroById(propriedadeDTO.getIdBairro());
+        Proprietario proprietario = proprietarioService.getProprietarioById(propriedadeDTO.getIdProprietario());
         Propriedade propriedade = new Propriedade();
+        propriedade.setProprietario(proprietario);
+        propriedade.setBairro(bairro);
         propriedade.setLatitude(propriedadeDTO.getLatitude());
         propriedade.setLongitude(propriedadeDTO.getLongitude());
         propriedadeService.savePropriedade(propriedade);

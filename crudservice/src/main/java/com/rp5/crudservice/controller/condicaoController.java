@@ -1,7 +1,9 @@
 package com.rp5.crudservice.controller;
 
 import com.rp5.crudservice.dto.CondicaoDTO;
+import com.rp5.crudservice.interfaces.ICaoService;
 import com.rp5.crudservice.interfaces.ICondicaoService;
+import com.rp5.crudservice.model.Cao;
 import com.rp5.crudservice.model.Condicao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,16 +19,18 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class condicaoController {
     private ICondicaoService condicaoService;
+    private ICaoService caoService;
 
-    public condicaoController(ICondicaoService condicaoService) {
+    public condicaoController(ICondicaoService condicaoService, ICaoService caoService) {
         this.condicaoService = condicaoService;
+        this.caoService = caoService;
     }
+
     @PostMapping("/save")
     @ApiOperation(value = "salvar uma condicao no banco de dados ")
     public void saveCondicao(@RequestBody CondicaoDTO condicaoDTO){
         Condicao condicao = new Condicao();
         condicao.setNome(condicaoDTO.getNome());
-        condicao.setId(condicaoDTO.getId());
         condicaoService.saveCondicao(condicao);
 
     }

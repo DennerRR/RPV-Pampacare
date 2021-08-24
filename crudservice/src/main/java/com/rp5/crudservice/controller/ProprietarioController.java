@@ -1,7 +1,9 @@
 package com.rp5.crudservice.controller;
 
 import com.rp5.crudservice.dto.ProprietarioDTO;
+import com.rp5.crudservice.interfaces.IPropriedadeService;
 import com.rp5.crudservice.interfaces.IProprietarioService;
+import com.rp5.crudservice.model.Propriedade;
 import com.rp5.crudservice.model.Proprietario;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
@@ -12,16 +14,20 @@ import java.util.List;
 
 public class ProprietarioController {
     private IProprietarioService proprietarioService;
+    private IPropriedadeService propriedadeService;
 
-    public ProprietarioController(IProprietarioService proprietarioService) {
+    public ProprietarioController(IProprietarioService proprietarioService, IPropriedadeService propriedadeService) {
         this.proprietarioService = proprietarioService;
+        this.propriedadeService = propriedadeService;
     }
+
     @PostMapping("/save")
     @ApiOperation(value = "salvar um proprietario no banco de dados ")
     public void saveProprietario(@RequestBody ProprietarioDTO proprietarioDTO){
-        Proprietario proprietario = new Proprietario();
-        proprietario.setNome(proprietarioDTO.getNome());
 
+        Proprietario proprietario = new Proprietario();
+
+        proprietario.setNome(proprietarioDTO.getNome());
         proprietarioService.saveProprietario(proprietario);
 
     }

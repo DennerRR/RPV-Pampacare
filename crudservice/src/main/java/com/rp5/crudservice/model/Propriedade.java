@@ -1,6 +1,7 @@
 package com.rp5.crudservice.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Propriedade {
@@ -15,10 +16,19 @@ public class Propriedade {
     @Column(name="latitude")
     private String latitude;
 
-    public Propriedade(long id, String longitude, String latitude) {
+    @ManyToOne
+    private Proprietario proprietario;
+
+    @ManyToOne
+    private Bairro bairro;
+
+
+    public Propriedade(long id, String longitude, String latitude, Proprietario proprietario, Bairro bairro) {
+        this.id = id;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.id = id;
+        this.proprietario = proprietario;
+        this.bairro = bairro;
     }
 
     public Propriedade() {
@@ -46,5 +56,21 @@ public class Propriedade {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    public Proprietario getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public Bairro getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
     }
 }

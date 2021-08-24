@@ -3,7 +3,13 @@ package com.rp5.crudservice.controller;
 
 import com.rp5.crudservice.dto.CaoDTO;
 import com.rp5.crudservice.interfaces.ICaoService;
+import com.rp5.crudservice.interfaces.ICondicaoService;
+import com.rp5.crudservice.interfaces.IProprietarioService;
+import com.rp5.crudservice.interfaces.IRacaService;
 import com.rp5.crudservice.model.Cao;
+import com.rp5.crudservice.model.Condicao;
+import com.rp5.crudservice.model.Proprietario;
+import com.rp5.crudservice.model.Raca;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
@@ -18,15 +24,27 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CaoController {
     private ICaoService caoService;
+    private IProprietarioService proprietarioService;
+    private IRacaService racaService;
+    private ICondicaoService condicaoService;
 
-    public CaoController(ICaoService caoService) {
+    public CaoController(ICaoService caoService, IProprietarioService proprietarioService, IRacaService racaService, ICondicaoService condicaoService) {
         this.caoService = caoService;
+        this.proprietarioService = proprietarioService;
+        this.racaService = racaService;
+        this.condicaoService = condicaoService;
     }
 
     @PostMapping("/save")
     @ApiOperation(value = "salvar um cão no banco de dados ")
     public void saveCao(@RequestBody CaoDTO caoDTO) {
+        Proprietario proprietario = proprietarioService.getProprietarioById(caoDTO.getIdProprietario());
+        Condicao condicao = condicaoService.getCondicaoById(caoDTO.getIdCondicao());
+        Raca raca = racaService.getRacaById(caoDTO.getIdRaca());
         Cao cao = new Cao();
+        cao.setCondicao(condicao);
+        cao.setRaca(raca);
+        cao.setProprietario(proprietario);
         cao.setNome(caoDTO.getNome());
         cao.setIdade(caoDTO.getIdade());
         cao.setColeira(caoDTO.isColeira());

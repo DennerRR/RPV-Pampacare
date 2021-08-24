@@ -1,22 +1,21 @@
 package com.rp5.crudservice.dto;
 
-public class CondicaoDTO {
-    private long id;
+import com.rp5.crudservice.model.Cao;
+
+import javax.persistence.OneToMany;
+import java.util.List;
+
+public class RacaDTO {
     private String nome;
+
     private Long idCao;
 
-    public CondicaoDTO(long id, String nome, Long idCao) {
-        this.id = id;
+    public RacaDTO(String nome, Long idCao) {
         this.nome = nome;
         this.idCao = idCao;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public RacaDTO() {
     }
 
     public String getNome() {

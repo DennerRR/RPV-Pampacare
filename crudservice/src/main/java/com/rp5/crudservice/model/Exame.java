@@ -2,6 +2,7 @@ package com.rp5.crudservice.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Exame {
@@ -13,9 +14,17 @@ public class Exame {
     @Column(name = "data")
     private Date data;
 
-    public Exame(Long id, Date data) {
+    @ManyToMany
+    private List<Procedimento> procedimento;
+
+    @ManyToOne
+    private Amostra amostra;
+
+    public Exame(Long id, Date data, List<Procedimento> procedimento, Amostra amostra) {
         this.id = id;
         this.data = data;
+        this.procedimento = procedimento;
+        this.amostra = amostra;
     }
 
     public Exame() {
@@ -35,5 +44,21 @@ public class Exame {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public List<Procedimento> getProcedimento() {
+        return procedimento;
+    }
+
+    public void setProcedimento(List<Procedimento> procedimento) {
+        this.procedimento = procedimento;
+    }
+
+    public Amostra getAmostra() {
+        return amostra;
+    }
+
+    public void setAmostra(Amostra amostra) {
+        this.amostra = amostra;
     }
 }

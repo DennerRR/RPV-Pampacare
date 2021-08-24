@@ -1,6 +1,7 @@
 package com.rp5.crudservice.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Condicao {
@@ -13,9 +14,13 @@ public class Condicao {
         @Column(name = "nome_Condicao")
         private String nome;
 
-        public Condicao(Long id, String nome) {
+        @OneToMany
+        private List<Cao> cao;
+
+        public Condicao(Long id, String nome, List<Cao> cao) {
                 this.id = id;
                 this.nome = nome;
+                this.cao = cao;
         }
 
         public Condicao() {
@@ -37,5 +42,11 @@ public class Condicao {
                 this.nome = nome;
         }
 
+        public List<Cao> getCao() {
+                return cao;
+        }
 
-    }
+        public void setCao(List<Cao> cao) {
+                this.cao = cao;
+        }
+}

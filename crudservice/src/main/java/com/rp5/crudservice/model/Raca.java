@@ -4,35 +4,32 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "proprietarios")
-public class Proprietario {
+public class Raca {
+
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String nome;
 
     @OneToMany
     private List<Cao> cao;
 
-    @ManyToMany
-    private List<Propriedade> propriedade;
-
-    public Proprietario(Long id, String nome) {
+    public Raca(long id, String nome, List<Cao> cao) {
         this.id = id;
         this.nome = nome;
+        this.cao = cao;
     }
 
-    public Proprietario() {
+    public Raca() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -42,5 +39,13 @@ public class Proprietario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Cao> getCao() {
+        return cao;
+    }
+
+    public void setCao(List<Cao> cao) {
+        this.cao = cao;
     }
 }
