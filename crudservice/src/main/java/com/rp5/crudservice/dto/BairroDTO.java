@@ -11,15 +11,14 @@ public class BairroDTO {
     private int numero;
     private String complemento;
     private String nome;
-    private Long idPropriedade;
 
-    public BairroDTO(String area, String rua, int numero, String complemento, String nome, Long idPropriedade) {
+
+    public BairroDTO(String area, String rua, int numero, String complemento, String nome) {
         this.area = area;
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
         this.nome = nome;
-        this.idPropriedade = idPropriedade;
     }
 
     public BairroDTO() {
@@ -65,11 +64,5 @@ public class BairroDTO {
         this.nome = nome;
     }
 
-    public Long getIdPropriedade() {
-        return idPropriedade;
-    }
 
-    public void setIdPropriedade(Long idPropriedade) {
-        this.idPropriedade = idPropriedade;
-    }
 }

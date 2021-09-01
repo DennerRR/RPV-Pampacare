@@ -36,9 +36,9 @@ public class PropriedadeController {
     @ApiOperation(value = "salvar uma Propriedade no banco de dados ")
     public void savePropriedade(@RequestBody PropriedadeDTO propriedadeDTO) {
         Bairro bairro = bairroService.getBairroById(propriedadeDTO.getIdBairro());
-        Proprietario proprietario = proprietarioService.getProprietarioById(propriedadeDTO.getIdProprietario());
+
         Propriedade propriedade = new Propriedade();
-        propriedade.setProprietario(proprietario);
+        //propriedade.setProprietario(proprietario);
         propriedade.setBairro(bairro);
         propriedade.setLatitude(propriedadeDTO.getLatitude());
         propriedade.setLongitude(propriedadeDTO.getLongitude());

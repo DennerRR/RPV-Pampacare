@@ -16,17 +16,14 @@ public class Bairro {
     private String complemento;
     private String nome;
 
-    @OneToMany
-    private List<Propriedade> propriedade;
 
-    public Bairro(long id, String area, String rua, int numero, String complemento, String nome, List<Propriedade> propriedade) {
+    public Bairro(long id, String area, String rua, int numero, String complemento, String nome) {
         this.id = id;
         this.area = area;
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
         this.nome = nome;
-        this.propriedade = propriedade;
     }
 
     public Bairro() {
@@ -80,11 +77,5 @@ public class Bairro {
         this.nome = nome;
     }
 
-    public List<Propriedade> getPropriedade() {
-        return propriedade;
-    }
 
-    public void setPropriedade(List<Propriedade> propriedade) {
-        this.propriedade = propriedade;
-    }
 }

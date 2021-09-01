@@ -5,6 +5,7 @@ import com.rp5.crudservice.interfaces.IPropriedadeService;
 import com.rp5.crudservice.interfaces.IProprietarioService;
 import com.rp5.crudservice.model.Propriedade;
 import com.rp5.crudservice.model.Proprietario;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/proprietario")
+@Api(value = "API Rest proprietario")
+@CrossOrigin(origins = "*")
 public class ProprietarioController {
     private IProprietarioService proprietarioService;
     private IPropriedadeService propriedadeService;

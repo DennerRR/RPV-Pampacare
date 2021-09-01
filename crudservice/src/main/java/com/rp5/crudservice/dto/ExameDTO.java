@@ -5,23 +5,17 @@ import java.util.Date;
 public class ExameDTO {
 
     private Date data;
-    private Long idExame;
+   // private String nome;
 
-    public ExameDTO(Date data, Long idExame) {
+
+    public ExameDTO(Date data) {
         this.data = data;
-        this.idExame = idExame;
     }
 
     public ExameDTO() {
     }
 
-    public Long getIdExame() {
-        return idExame;
-    }
 
-    public void setIdExame(Long idExame) {
-        this.idExame = idExame;
-    }
 
     public Date getData() {
         return data;
@@ -30,4 +24,6 @@ public class ExameDTO {
     public void setData(Date data) {
         this.data = data;
     }
+
+
 }

@@ -39,10 +39,10 @@ public class CaoController {
     @ApiOperation(value = "salvar um cão no banco de dados ")
     public void saveCao(@RequestBody CaoDTO caoDTO) {
         Proprietario proprietario = proprietarioService.getProprietarioById(caoDTO.getIdProprietario());
-        Condicao condicao = condicaoService.getCondicaoById(caoDTO.getIdCondicao());
+        //Condicao condicao = condicaoService.getCondicaoById(caoDTO.getIdCondicao());
         Raca raca = racaService.getRacaById(caoDTO.getIdRaca());
         Cao cao = new Cao();
-        cao.setCondicao(condicao);
+        //cao.setCondicao(condicao);
         cao.setRaca(raca);
         cao.setProprietario(proprietario);
         cao.setNome(caoDTO.getNome());

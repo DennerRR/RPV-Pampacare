@@ -13,6 +13,7 @@ public class Exame {
 
     @Column(name = "data")
     private Date data;
+     private String nome;
 
     @ManyToMany
     private List<Procedimento> procedimento;
@@ -20,9 +21,10 @@ public class Exame {
     @ManyToOne
     private Amostra amostra;
 
-    public Exame(Long id, Date data, List<Procedimento> procedimento, Amostra amostra) {
+    public Exame(Long id, Date data, String nome, List<Procedimento> procedimento, Amostra amostra) {
         this.id = id;
         this.data = data;
+        this.nome = nome;
         this.procedimento = procedimento;
         this.amostra = amostra;
     }
@@ -60,5 +62,13 @@ public class Exame {
 
     public void setAmostra(Amostra amostra) {
         this.amostra = amostra;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

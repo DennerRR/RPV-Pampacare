@@ -29,9 +29,10 @@ public class ExameController {
     @PostMapping("/save")
     @ApiOperation(value = "salvar um exame no banco de dados ")
     public void saveExame(@RequestBody ExameDTO exameDTO){
-        Amostra amostra = amostraService.getAmostraById(exameDTO.getIdExame());
+        //Amostra amostra = amostraService.getAmostraById(exameDTO.getIdExame());
         Exame exame = new Exame();
-        exame.setAmostra(amostra);
+        //exame.setAmostra(amostra);
+        //exame.setNome(exameDTO.getNome());
         exame.setData(exameDTO.getData());
 
         exameService.saveExame(exame);

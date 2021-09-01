@@ -16,18 +16,16 @@ public class Propriedade {
     @Column(name="latitude")
     private String latitude;
 
-    @ManyToOne
-    private Proprietario proprietario;
+
 
     @ManyToOne
     private Bairro bairro;
 
 
-    public Propriedade(long id, String longitude, String latitude, Proprietario proprietario, Bairro bairro) {
+    public Propriedade(long id, String longitude, String latitude, Bairro bairro) {
         this.id = id;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.proprietario = proprietario;
         this.bairro = bairro;
     }
 
@@ -58,13 +56,7 @@ public class Propriedade {
         this.latitude = latitude;
     }
 
-    public Proprietario getProprietario() {
-        return proprietario;
-    }
 
-    public void setProprietario(Proprietario proprietario) {
-        this.proprietario = proprietario;
-    }
 
     public Bairro getBairro() {
         return bairro;
